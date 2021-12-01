@@ -188,6 +188,16 @@ ResultSet rs;
                     globalIdUser = id;
 //                    homepage.lbIdUser.setVisible(false);
                     hp.setVisible(true);
+                } else 
+                {
+                    String id = rs.getString("idUser");
+                    JOptionPane.showMessageDialog(null, "Berhasil Login");
+                    this.dispose();
+                    desain hp = new desain();
+//                    homepage.lbIdUser.setText(id);
+                    globalIdUser = id;
+//                    homepage.lbIdUser.setVisible(false);
+                    hp.setVisible(true);
                 }
                 
             }

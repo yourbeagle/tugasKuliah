@@ -28,14 +28,11 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class desain extends javax.swing.JFrame {
 Connection con;
-String IdGlobal = "4";
+String idPembelian;
 PreparedStatement pst;
 Statement stm;
 ResultSet rs;
 
-    /**
-     * Creates new form desain
-     */
     CardLayout cardLayout;
     public desain() {
         initComponents();
@@ -56,7 +53,7 @@ ResultSet rs;
        lbimage.setIcon(logoIcon);}
     
     public void set_date(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(" dd-MM-yyyy");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(" yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
         LbTanggal.setText(dtf.format(now));
     }
@@ -65,7 +62,7 @@ ResultSet rs;
     try {
             con = Koneksi.configDB();
             pst = con.prepareStatement(sql);
-            pst.setString(1, IdGlobal);
+            pst.setString(1, LoginPage.globalIdUser);
             rs = pst.executeQuery();
             while(rs.next())
             {
@@ -213,6 +210,8 @@ ResultSet rs;
         txtJumlah = new javax.swing.JTextField();
         txtSubtotal = new javax.swing.JTextField();
         LbDetil = new javax.swing.JLabel();
+        cbSup = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -467,6 +466,12 @@ ResultSet rs;
         LbDetil.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         LbDetil.setText("Mie Goreng");
 
+        cbSup.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbSup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setText("Supplier");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -488,23 +493,33 @@ ResultSet rs;
                                     .addComponent(txtSubtotal))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(LbBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LbBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                 .addGap(322, 322, 322)))
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(LbDetil, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbSup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(LbDetil))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
+                                .addComponent(LbDetil)
+                                .addComponent(cbSup, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -512,8 +527,7 @@ ResultSet rs;
                         .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtJumlah)))
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtJumlah))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
@@ -544,7 +558,7 @@ ResultSet rs;
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -683,14 +697,44 @@ ResultSet rs;
     }//GEN-LAST:event_TbPembelian2MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        
+        
         String id = LbDetil.getText();
         String jumlah = txtJumlah.getText();
         String subtotal = txtSubtotal.getText();
+        String sup = cbSup.getSelectedItem().toString();
+        String tgll = LbTanggal.getText();
+        
+        String sql3="INSERT INTO `pembelian` (`idPembelian`, `idSupplier`, `tgl_beli`, `Total`) VALUES (?,?,?,?);";
+        String sql2 = "select * from pembelian ORDER BY idPembelian DESC LIMIT 1";
         String sql="INSERT INTO `detail_pembelian` ( `idPembelian`, `idBarang`, `jumlah`, `subTotal`) VALUES (?, ?, ?, ?);";
+        
+        try {
+            con = Koneksi.configDB();
+            pst = con.prepareStatement(sql3);
+            pst.setString(1, null);
+            pst.setString(2, sup);
+            pst.setString(3, tgll);
+            pst.setString(4, subtotal);
+            pst.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        try {
+            con = Koneksi.configDB();
+            stm = con.createStatement();
+            rs = stm.executeQuery(sql2);
+            if (rs.next())
+            {
+                idPembelian = rs.getString("idPembelian");
+            }
+            } catch (Exception e) {
+        }
         try {
             con = Koneksi.configDB();
             pst = con.prepareStatement(sql);
-            pst.setString(1, "1");
+            pst.setString(1, idPembelian);
             pst.setString(2, id);
             pst.setString(3, jumlah);
             pst.setString(4, subtotal);
@@ -775,6 +819,7 @@ ResultSet rs;
     private javax.swing.JTable TbPenjualan;
     private javax.swing.JPanel addstok;
     private javax.swing.JPanel card;
+    private javax.swing.JComboBox<String> cbSup;
     private javax.swing.JPanel dashboard;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -793,6 +838,7 @@ ResultSet rs;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
