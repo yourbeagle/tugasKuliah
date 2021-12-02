@@ -190,8 +190,8 @@ ResultSet rs;
         jScrollPane2 = new javax.swing.JScrollPane();
         TbPenjualan = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btCetakPembelian = new javax.swing.JButton();
+        btCetakPenjualan = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         LbNama = new javax.swing.JLabel();
         LbTanggal = new javax.swing.JLabel();
@@ -321,17 +321,17 @@ ResultSet rs;
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Penjualan");
 
-        jButton4.setText("Cetak");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btCetakPembelian.setText("Cetak");
+        btCetakPembelian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btCetakPembelianActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Cetak");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btCetakPenjualan.setText("Cetak");
+        btCetakPenjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btCetakPenjualanActionPerformed(evt);
             }
         });
 
@@ -385,11 +385,11 @@ ResultSet rs;
                     .addGroup(dashboardLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btCetakPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(dashboardLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btCetakPembelian, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -400,13 +400,13 @@ ResultSet rs;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btCetakPembelian, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btCetakPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
@@ -666,6 +666,7 @@ ResultSet rs;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        LoginPage.globalIdUser = "";
         this.dispose();
         LoginPage hp = new LoginPage();
         hp.setVisible(true);
@@ -746,9 +747,9 @@ ResultSet rs;
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btCetakPembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCetakPembelianActionPerformed
          try {
-            String jrxmlFile = "src/report/pembelian.jrxml";
+            String jrxmlFile = ".\\src\\report\\beli.jrxml";
             con = Koneksi.configDB();
             HashMap param = new HashMap();
             JasperReport jspr = JasperCompileManager.compileReport(jrxmlFile);
@@ -758,11 +759,11 @@ ResultSet rs;
             JOptionPane.showMessageDialog(rootPane, e);
         }
             // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btCetakPembelianActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btCetakPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCetakPenjualanActionPerformed
      try {
-            String jrxmlFile = "src/report/penjualan.jrxml";
+            String jrxmlFile = ".\\src\\report\\jual.jrxml";
             con = Koneksi.configDB();
             HashMap param = new HashMap();
             JasperReport jspr = JasperCompileManager.compileReport(jrxmlFile);
@@ -772,7 +773,7 @@ ResultSet rs;
             JOptionPane.showMessageDialog(rootPane, e);
         }
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btCetakPenjualanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -818,14 +819,14 @@ ResultSet rs;
     private javax.swing.JTable TbPembelian2;
     private javax.swing.JTable TbPenjualan;
     private javax.swing.JPanel addstok;
+    private javax.swing.JButton btCetakPembelian;
+    private javax.swing.JButton btCetakPenjualan;
     private javax.swing.JPanel card;
     private javax.swing.JComboBox<String> cbSup;
     private javax.swing.JPanel dashboard;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;

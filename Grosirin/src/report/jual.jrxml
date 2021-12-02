@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.3310000000000035"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT detail_penjualan.*,penjualan.Total,barang.namaBarang FROM detail_penjualan INNER JOIN barang ON barang.idBarang = detail_penjualan.idBarang INNER JOIN penjualan ON penjualan.idPenjualan = detail_penjualan.idPenjualan;]]>
+	</queryString>
+	<field name="id_detailP" class="java.lang.Integer"/>
+	<field name="idPenjualan" class="java.lang.Integer"/>
+	<field name="idBarang" class="java.lang.Integer"/>
+	<field name="jumlah" class="java.lang.Integer"/>
+	<field name="subTotal" class="java.lang.Integer"/>
+	<field name="Total" class="java.lang.Integer"/>
+	<field name="namaBarang" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="0" width="357" height="36"/>
+				<textElement>
+					<font fontName="Arial" size="30"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PENJUALAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="406" y="12" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="74" y="4" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[ID detail Penj]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="5" width="68" height="20"/>
+				<textElement/>
+				<text><![CDATA[ID Penjualan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="5" width="47" height="20"/>
+				<textElement/>
+				<text><![CDATA[ID Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="5" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="5" width="75" height="20"/>
+				<textElement/>
+				<text><![CDATA[SubTotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="5" width="64" height="20"/>
+				<textElement/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="5" width="83" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama Barang]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="26" width="555" height="3"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="555" height="3"/>
+			</line>
+			<line>
+				<reportElement x="0" y="24" width="555" height="3"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="74" y="3" width="52" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id_detailP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="3" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idPenjualan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="7" width="47" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idBarang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="7" width="52" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="7" width="75" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{subTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="7" width="64" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="7" width="83" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{namaBarang}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="26" width="555" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="532" y="9" width="23" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="6" y="9" width="76" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>
