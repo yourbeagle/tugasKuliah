@@ -35,7 +35,7 @@ public class viewbarang extends javax.swing.JFrame {
     public viewbarang() {
         initComponents();
         lbIdBarang.setVisible(false);
-        
+        lbIdUser.setVisible(false);
     }
     
     public void setIconcart()
