@@ -462,6 +462,7 @@ public class viewbarang extends javax.swing.JFrame {
         ProductList p = new ProductList(this.namaBarang, this.jumlah, this.total, this.idBarang);
         cartItem.add(p);
         JOptionPane.showMessageDialog(null,"Berhasil ditambahkan ke cart");
+        txjumlah.setText("1");
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btntambahActionPerformed
